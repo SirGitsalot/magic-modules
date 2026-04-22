@@ -35,16 +35,11 @@ mm_template_library(
 go_library(
     name = "acctest",
     srcs = [
-        "bootstrap_iam_test_utils.go",
-        "diff_utils.go",
-        "provider_test_utils.go",
-        "resource_inventory_reader.go",
-        "resource_test_utils.go",
-        "tgc_utils.go",
-        "vcr_utils.go",
+        ":acctest_templates",
     ],
     importpath = "github.com/GoogleCloudPlatform/magic-modules/mmv1/third_party/terraform/acctest",
     deps = [
+        #"//mmv1/third_party/terraform/envvar",
         "@com_github_dnaeon_go_vcr//cassette",
         "@com_github_dnaeon_go_vcr//recorder",
         "@com_github_hashicorp_terraform_json//:terraform-json",
@@ -53,6 +48,7 @@ go_library(
         "@com_github_hashicorp_terraform_plugin_framework//provider",
         "@com_github_hashicorp_terraform_plugin_framework//resource",
         "@com_github_hashicorp_terraform_plugin_go//tfprotov5",
+        "@com_github_hashicorp_terraform_plugin_go//tfprotov6",
         "@com_github_hashicorp_terraform_plugin_log//tflog",
         "@com_github_hashicorp_terraform_plugin_sdk_v2//diag",
         "@com_github_hashicorp_terraform_plugin_sdk_v2//helper/schema",

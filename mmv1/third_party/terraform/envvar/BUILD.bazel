@@ -3,6 +3,9 @@ load("@rules_go//go:def.bzl", "go_library")
 go_library(
     name = "envvar",
     srcs = ["envvar_utils.go"],
+    deps = [
+        "//mmv1/third_party/terraform/transport",
+    ],
     importpath = "github.com/GoogleCloudPlatform/magic-modules/mmv1/third_party/terraform/envvar",
     visibility = ["//visibility:public"],
 )
