@@ -26,7 +26,7 @@ go_library(
     srcs = [":acctest_templates"],
     importpath = "github.com/GoogleCloudPlatform/magic-modules/mmv1/third_party/terraform/acctest",
     deps = [
-        #"//mmv1/third_party/terraform/envvar",
+        "//mmv1/third_party/terraform/envvar",
         "@com_github_dnaeon_go_vcr//cassette",
         "@com_github_dnaeon_go_vcr//recorder",
         "@com_github_hashicorp_terraform_json//:terraform-json",
