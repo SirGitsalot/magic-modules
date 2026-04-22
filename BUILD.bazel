@@ -26,7 +26,6 @@ load("@gazelle//:def.bzl", "gazelle")
 # gazelle:exclude mmv1/third_party/terraform/tpgdclresource
 # gazelle:exclude mmv1/third_party/terraform/tpgiamresource
 # gazelle:exclude mmv1/third_party/terraform/tpgresource
-# gazelle:exclude mmv1/third_party/terraform/transport
 # gazelle:exclude mmv1/third_party/terraform/version
 # gazelle:exclude mmv1/third_party/terraform/verify
 # gazelle:exclude mmv1/third_party/terraform/website

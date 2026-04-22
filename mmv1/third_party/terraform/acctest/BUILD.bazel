@@ -21,22 +21,9 @@ mm_template_library(
     version = "ga",
 )
 
-mm_template_library(
-    name = "acctest_test_templates",
-    srcs = [
-        "diff_utils_test.go",
-        "resource_inventory_test.go",
-        "tgc_utils_test.go",
-        "vcr_utils_test.go",
-    ],
-    version = "ga",
-)
-
 go_library(
     name = "acctest",
-    srcs = [
-        ":acctest_templates",
-    ],
+    srcs = [":acctest_templates"],
     importpath = "github.com/GoogleCloudPlatform/magic-modules/mmv1/third_party/terraform/acctest",
     deps = [
         #"//mmv1/third_party/terraform/envvar",
@@ -48,7 +35,6 @@ go_library(
         "@com_github_hashicorp_terraform_plugin_framework//provider",
         "@com_github_hashicorp_terraform_plugin_framework//resource",
         "@com_github_hashicorp_terraform_plugin_go//tfprotov5",
-        "@com_github_hashicorp_terraform_plugin_go//tfprotov6",
         "@com_github_hashicorp_terraform_plugin_log//tflog",
         "@com_github_hashicorp_terraform_plugin_sdk_v2//diag",
         "@com_github_hashicorp_terraform_plugin_sdk_v2//helper/schema",
