@@ -112,6 +112,6 @@ go_test(
         "@com_github_hashicorp_terraform_plugin_sdk_v2//helper/schema",
         "@com_github_hashicorp_terraform_plugin_testing//helper/resource",
         "@com_github_hashicorp_terraform_plugin_testing//terraform",
-        "@google_golang_org//protobuf/types/known",
+        "@org_golang_google_protobuf//protobuf/types/known",
     ],
 )
