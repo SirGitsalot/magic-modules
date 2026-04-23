@@ -1,7 +1,52 @@
 load("@rules_go//go:def.bzl", "go_library", "go_test")
+load("//build_defs:go.bzl", "mm_go_library")
 load("//build_defs:product.bzl", "mm_template_library")
 
 package(default_visibility = ["//mmv1:__subpackages__"])
+
+mm_go_library(
+    name = "acctest_lib",
+    version = "ga",
+    importpath = "github.com/hashicorp/terraform-provider-google/google/acctest",
+    srcs = [
+        "bootstrap_iam_test_utils.go",
+        "diff_utils.go",
+        "provider_test_utils.go",
+        "resource_inventory_reader.go",
+        "resource_test_utils.go",
+        "tgc_utils.go",
+        "vcr_utils.go",
+    ],
+    templates = [
+        "bootstrap_test_utils.go.tmpl",
+        "test_utils.go.tmpl",
+    ],
+)
+
+go_library(
+    name = "acctest_lib_lib",
+    srcs = [":acctest_lib"],
+    deps = [
+        "//mmv1/third_party/terraform/envvar",
+        "@com_github_dnaeon_go_vcr//cassette",
+        "@com_github_dnaeon_go_vcr//recorder",
+        "@com_github_hashicorp_terraform_json//:terraform-json",
+        "@com_github_hashicorp_terraform_plugin_framework//datasource",
+        "@com_github_hashicorp_terraform_plugin_framework//diag",
+        "@com_github_hashicorp_terraform_plugin_framework//provider",
+        "@com_github_hashicorp_terraform_plugin_framework//resource",
+        "@com_github_hashicorp_terraform_plugin_go//tfprotov5",
+        "@com_github_hashicorp_terraform_plugin_log//tflog",
+        "@com_github_hashicorp_terraform_plugin_sdk_v2//diag",
+        "@com_github_hashicorp_terraform_plugin_sdk_v2//helper/schema",
+        "@com_github_hashicorp_terraform_plugin_sdk_v2//terraform",
+        "@com_github_hashicorp_terraform_plugin_testing//helper/resource",
+        "@com_github_hashicorp_terraform_plugin_testing//plancheck",
+        "@com_github_hashicorp_terraform_plugin_testing//terraform",
+        "@in_gopkg_yaml_v2//:yaml_v2",
+        "@org_golang_google_api//cloudresourcemanager/v1:cloudresourcemanager",
+    ],
+)
 
 mm_template_library(
     name = "acctest_templates",
