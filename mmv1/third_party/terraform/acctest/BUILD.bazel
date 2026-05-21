@@ -6,8 +6,6 @@ package(default_visibility = ["//mmv1:__subpackages__"])
 
 mm_go_library(
     name = "acctest_lib",
-    version = "ga",
-    importpath = "github.com/hashicorp/terraform-provider-google/google/acctest",
     srcs = [
         "bootstrap_iam_test_utils.go",
         "diff_utils.go",
@@ -17,17 +15,20 @@ mm_go_library(
         "tgc_utils.go",
         "vcr_utils.go",
     ],
+    importpath = "github.com/hashicorp/terraform-provider-google/google/acctest",
     templates = [
         "bootstrap_test_utils.go.tmpl",
         "test_utils.go.tmpl",
     ],
+    version = "ga",
 )
 
 go_library(
-    name = "acctest_lib_lib",
-    srcs = [":acctest_lib"],
+    name = "acctest",
+    srcs = [
+        ":acctest_lib",  # keep
+    ],
     deps = [
-        "//mmv1/third_party/terraform/envvar",
         "@com_github_dnaeon_go_vcr//cassette",
         "@com_github_dnaeon_go_vcr//recorder",
         "@com_github_hashicorp_terraform_json//:terraform-json",
@@ -67,11 +68,12 @@ mm_template_library(
 )
 
 go_library(
-    name = "acctest",
-    srcs = [":acctest_templates"],
+    name = "acctest_templates_lib",
+    srcs = [
+        ":acctest_templates",  # keep
+    ],
     importpath = "github.com/GoogleCloudPlatform/magic-modules/mmv1/third_party/terraform/acctest",
     deps = [
-        "//mmv1/third_party/terraform/envvar",
         "@com_github_dnaeon_go_vcr//cassette",
         "@com_github_dnaeon_go_vcr//recorder",
         "@com_github_hashicorp_terraform_json//:terraform-json",
