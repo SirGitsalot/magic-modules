@@ -45,7 +45,7 @@ func TestAccDataSourceAssuredWorkloadsV2Workload_basic(t *testing.T) {
 }
 
 func testAccDataSourceAssuredWorkloadsV2Workload_basic(context map[string]interface{}) string {
-	return testAccAssuredWorkloadsV2Workload_existingProject(context, 62, "%{controls_rev62_monitor}", "") + `
+	return testAccAssuredWorkloadsV2Workload_existingProjectMonitorRev62(context) + `
 data "google_assured_workloads_v2_workload" "by_ids" {
   organization = google_assured_workloads_v2_workload.workload.organization
   location     = google_assured_workloads_v2_workload.workload.location
